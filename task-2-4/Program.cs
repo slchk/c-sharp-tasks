@@ -6,26 +6,26 @@ namespace MyApp
     {
         static void Main(string[] args)
         {
-            int[] numbers = { 1, 2, 3, 5 };
-            Console.WriteLine(string.Join(", ", numbers));
+            int[] firstNumberArray = { 1, 2, 3, 5 };
+            Console.WriteLine(string.Join(", ", firstNumberArray));
             int sum = 0;
 
-            foreach (int i in numbers)
+            foreach (var number in firstNumberArray)
             {
-                sum += i;
+                sum += number;
             }
 
-            double average = (double)sum / numbers.Length;
+            double average = (double)sum / firstNumberArray.Length;
             
-            int[] numbers2 = { 9, 15, 63 };
-            Console.WriteLine(string.Join(", ", numbers2));
+            int[] secondNumberArray = { 9, 15, 63 };
+            Console.WriteLine(string.Join(", ", secondNumberArray));
             int sum2 = 0;
-            foreach (int j in numbers2)
+            foreach (var number in secondNumberArray)
             {
-                sum2 += j;
+                sum2 += number;
             }
 
-            double average2 = (double)sum2 / numbers2.Length;
+            double average2 = (double)sum2 / secondNumberArray.Length;
 
             if (average > average2)
             {

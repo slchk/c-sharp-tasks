@@ -9,26 +9,26 @@
             Console.WriteLine("Enter the number");
             string userInput = Console.ReadLine();
            
-            if (int.TryParse(userInput, out int number))
+            if (int.TryParse(userInput, out int numberToDelete))
             {
-                if (array.Contains(number))
+                if (array.Contains(numberToDelete))
                 {
                     int newArrayIndex = 0;
                     int newArrayLength = 0;
-                    foreach (int i in array)
+                    foreach (int number in array)
                     {
-                        if (i != number)
+                        if (number != numberToDelete)
                         {
                             newArrayLength++;
                         }
                     }
                     
                     int[] newArray = new int[newArrayLength];
-                    foreach (int i in array)
+                    foreach (int number in array)
                     {
-                        if (i != number)
+                        if (number != numberToDelete)
                         {
-                            newArray[newArrayIndex] = i;
+                            newArray[newArrayIndex] = number;
                             newArrayIndex++;
                         }
                     }
@@ -36,7 +36,7 @@
                 }
                 else
                 {
-                    Console.WriteLine($"Number {number} is not in the array.");
+                    Console.WriteLine($"Number {numberToDelete} is not in the array.");
                 }
             }
             else

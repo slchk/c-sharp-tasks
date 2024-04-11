@@ -19,26 +19,10 @@
                     array[i] = rnd.Next();
                 }
 
-                int minNumber = array[0];
-                for (int i = 1; i < array.Length; i++)
-                {
-                    if (array[i] < minNumber)
-                    {
-                        minNumber = array[i];
-                    }
-                }
-
+                int minNumber = array.Min();
                 Console.WriteLine($"Minimum value in array is {minNumber}");
-
-                int maxNumber = array[0];
-                for (int i = 1; i < array.Length; i++)
-                {
-                    if (array[i] > maxNumber)
-                    {
-                        maxNumber = array[i];
-                    }
-                }
-
+                
+                int maxNumber = array.Max();
                 Console.WriteLine($"Maximum value in array is {maxNumber}");
 
                 int sum = 0;
