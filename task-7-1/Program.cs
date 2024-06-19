@@ -51,18 +51,13 @@ class Program
         {
             Auth.Login(" ", "qwerty1", "qwerty1");
         }
-        catch (Exception WrongLoginException)
+        catch (WrongLoginException exception)
         {
-            Console.WriteLine($"Error: {WrongLoginException.Message}");
+            Console.WriteLine($"Error: {exception.Message}");
         }
-        
-        try
+        catch (WrongPasswordException exception)
         {
-            Auth.Login("Ivan", "qwerty", "qwerty");
-        }
-        catch (Exception WrongPasswordException)
-        {
-            Console.WriteLine($"Error: {WrongPasswordException.Message}");
+            Console.WriteLine($"Error: {exception.Message}");
         }
     }
 }
