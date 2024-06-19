@@ -1,8 +1,8 @@
 ﻿using System;
 class Student {
     //Fields
-    public string Name {get; set;}
-    public string Group {get; set;} 
+    private string Name {get; set;}
+    private string Group {get; set;} 
     public int DiplomaGrade {get; set;}
 
     //Constructor
