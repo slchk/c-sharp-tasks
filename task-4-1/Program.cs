@@ -3,9 +3,9 @@ using System.Runtime.InteropServices.JavaScript;
   
 class Phone {
     
-    public string Number;
-    public string Model;
-    public int Weight;
+    private string Number;
+    private string Model;
+    private int Weight;
 
     public Phone(string number, string model, int weight) : this(number,  model)
     {
