@@ -8,6 +8,12 @@
 // Если план лечения имеет код 2 – назначить дантиста и выполнить метод  лечить.  
 // Если план лечения имеет любой другой код – назначить терапевта и  выполнить метод лечить. 
 
+enum DoctorType
+{
+    Surgeon = 1,
+    Dentist = 2,
+    Internist = 3 
+}
 abstract class Doctors
 {
     public abstract void Treat();
@@ -37,49 +43,56 @@ class Dentist : Doctors
     }
 }
 
-class Patient
+class TreatmentPlan
 {
-    public TreatmentPlan treatmentPlan = new TreatmentPlan();
-    public Doctors doctor;
-    
-    public void AssignDoctor()
+    public DoctorType DoctorType { get; set; }
+
+    public TreatmentPlan(DoctorType doctorType)
     {
-        if (int.TryParse(treatmentPlan.code, out int number))
-        {
-            if (number == 1)
-            {
-                doctor = new Surgeon();
-                doctor.Treat();
-            }
-            else if (number == 2)
-            {
-                doctor = new Dentist();
-                doctor.Treat();
-            }
-            else
-            {
-                doctor = new Internist();
-                doctor.Treat();
-            }
-        }
-        else
-        {
-            Console.WriteLine("This is not a number");
-        }
+        DoctorType = doctorType;
     }
 }
 
-class TreatmentPlan
+class Patient
 {
-    public string code = Console.ReadLine();
+    public TreatmentPlan Plan { get; set; }
+
+    public Patient(TreatmentPlan plan)
+    {
+        Plan = plan;
+    }
 }
 
-class Program
+class Program 
 {
     static void Main()
     {
-        Console.WriteLine("Enter a number to select service");
-        Patient patient = new Patient();
-        patient.AssignDoctor();
+        TreatmentPlan plan = new TreatmentPlan(DoctorType.Surgeon);
+        Patient patient = new Patient(plan);
+        AssignDoctor(patient.Plan);
+    }
+
+    static void AssignDoctor(TreatmentPlan plan)
+    {
+        Doctors doctor;
+        switch (plan.DoctorType)
+        {
+            case DoctorType.Surgeon:
+                doctor = new Surgeon();
+                break;
+            case DoctorType.Dentist:
+                doctor = new Dentist();
+                break;
+            case DoctorType.Internist:
+                doctor = new Internist();
+                break;
+            default:
+                doctor = new Internist();
+                break;
+        }
+        doctor.Treat();
     }
 }
+
+
+
