@@ -7,53 +7,7 @@
 // Создать базу (массив) из n товаров, вывести полную информацию из базы на экран, а также организовать поиск просроченного товара (на момент текущей даты).
 
 using System.Reflection.Metadata.Ecma335;
-
-public class Product
-{ 
-    public string Name { get; set; }
-    public double Price { get; set; }
-    public DateTime ExpirationDate { get; set; }
-    public DateTime ProductionDate { get; set; }
-    
-    public void DisplayInfo()
-    {
-        Console.WriteLine($"Product: {Name}, Price: {Price}, Production Date: {ProductionDate}, Expiration Date: {ExpirationDate}");
-    }
-    
-    public bool IsExpired()
-    {
-        return ExpirationDate <= DateTime.Today;
-    }
-}
-class ProductItem : Product
-{
-    public int Amount { get; set; }
-    
-}
-class Batch : Product
-{
-    public int Amount { get; set; }
-    public void DisplayInfo()
-    {
-        base.DisplayInfo();
-        Console.WriteLine($"Amount: {Amount}");
-    }
-}
-
-class Set : Product
-{
-    public ProductItem[] Products { get; set; }
-
-    public void DisplaySetInfo()
-    {
-        base.DisplayInfo();
-        Console.WriteLine("Products in the Set:");
-        foreach (var product in Products)
-        {
-            Console.WriteLine($" - {product.Name}, Amount: {product.Amount}");
-        }
-    }
-}
+namespace task_6_2;
 
 class Program
 {
